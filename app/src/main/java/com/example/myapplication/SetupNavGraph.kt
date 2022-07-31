@@ -22,7 +22,10 @@ fun SetupNavGraph(navController: NavHostController) {
             LoginPage(navController = navController)
         }
         composable(route= Screen.RegisterScreen.route){
-
+            RegisterPage(navController= navController)
+        }
+        composable(route= Screen.MapScreen.route){
+            MapScreen()
         }
     }
 

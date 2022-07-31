@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApplicationTheme {
-                androidx.compose.material.Surface() {
+                androidx.compose.material.Surface {
 
 
                 val navController = rememberNavController()

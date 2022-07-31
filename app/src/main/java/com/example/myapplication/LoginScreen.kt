@@ -31,13 +31,14 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
 fun LoginPage(navController: NavController){
     val image = painterResource(id = R.drawable.pigeon_t)
     val email = remember { mutableStateOf("") }
-    var password = remember { mutableStateOf("") }
+    val password = remember { mutableStateOf("") }
     val passwordVisibility = remember { mutableStateOf(false) }
     Box(modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.BottomCenter){
@@ -123,4 +124,12 @@ fun LoginPage(navController: NavController){
 
     }
 
+}
+
+
+@Composable
+@Preview
+
+fun LoginPreview(){
+    LoginPage(rememberNavController())
 }
