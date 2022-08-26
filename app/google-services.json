@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "603901514751",
+    "firebase_url": "https://waonder2-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "waonder2",
+    "storage_bucket": "waonder2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603901514751:android:171ace019fd08dbca00dca",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603901514751-qbtgetnktqq8d7eqflk39d2hgqmlkrb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA10pasi3tIIf4g_HoB_VfWD3z9JkFtLA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603901514751-qbtgetnktqq8d7eqflk39d2hgqmlkrb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

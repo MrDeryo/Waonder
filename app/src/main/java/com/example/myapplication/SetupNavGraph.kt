@@ -1,16 +1,18 @@
 package com.example.myapplication
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.internal.composableLambda
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
+    val auth by lazy {
+        Firebase.auth
+    }
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route
@@ -19,13 +21,16 @@ fun SetupNavGraph(navController: NavHostController) {
             AnimatedSplashScreen(navController= navController)
         }
         composable(route= Screen.LoginScreen.route){
-            LoginPage(navController = navController)
+            LoginPage(navController = navController,auth)
         }
         composable(route= Screen.RegisterScreen.route){
-            RegisterPage(navController= navController)
+            RegisterPage(navController= navController,auth)
         }
         composable(route= Screen.MapScreen.route){
             MapScreen()
+        }
+        composable(route= Screen.HomeScreen.route){
+            HomePage(navController= navController)
         }
     }
 
