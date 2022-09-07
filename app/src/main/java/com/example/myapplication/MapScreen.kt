@@ -8,11 +8,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import com.google.android.gms.maps.GoogleMap
+import com.example.myapplication.chat.ChatActivity
+import com.example.myapplication.db.DataBaseManager
+import com.example.myapplication.db.PositionActivity
 import com.google.android.gms.maps.model.CameraPosition
 
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.PolylineOptions
+
 
 import com.google.maps.android.compose.*
 
@@ -47,33 +49,40 @@ fun MapFun(){
         modifier = Modifier.fillMaxSize(),
         properties = properties,
         uiSettings = uiSettings,
-        onMapLongClick = {
-            Log.d("SIZE", markerPositions.size.toString())
-            val toast = Toast.makeText(context,it.toString(),Toast.LENGTH_SHORT)
-            toast.show()
+        onMapClick = {
+            //Log.d("SIZE", markerPositions.size.toString())
+            //val toast = Toast.makeText(context,it.toString(),Toast.LENGTH_SHORT)
+            //toast.show()
             markerPosition=it
-            markerPositions.add(it)
+            //markerPositions.add(it)
+
         }
     )
     {
+
         lastPosition = MainActivity.lastLocation
         Marker(state = MarkerState(position = lastPosition),)
         cameraPositionState = rememberCameraPositionState{
             position = CameraPosition.fromLatLngZoom(LatLng(lastPosition.latitude,lastPosition.longitude),5f)
-
+        DataBaseManager.getInstance().savePosition(ChatActivity.mUsername,lastPosition)
         }
 
 
-        Marker(state = MarkerState(position = markerPosition))
+        //Marker(state = MarkerState(position = markerPosition))
         for(it : LatLng in markerPositions ) {
             Marker(
                 state = MarkerState(
                     position = it
-                ),
-
+                )
             )
         }
-
+        for((username, position) in PositionActivity.locations )  {
+            Marker(
+                state = MarkerState(
+                    position = position
+                )
+            )
+        }
     }
 
 

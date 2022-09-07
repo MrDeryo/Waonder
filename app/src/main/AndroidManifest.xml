@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".chat.ChatActivity"></activity>
+        <activity android:name=".db.PositionActivity"></activity>
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDHs33adqgvr_s9zASFk0N6AMecT_YOlsI" />

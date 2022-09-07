@@ -13,41 +13,17 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.db.PositionActivity
 import com.example.myapplication.ui.theme.MyApplicationTheme
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.LatLng
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
-
-/*class MainActivity : ComponentActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-
-            MyApplicationTheme {
-
-                androidx.compose.material.Surface {
-                    val context = LocalContext.current
-                    val navController = rememberNavController()
-                    SetupNavGraph(navController= navController)
-
-                }
-
-            }
-            }
-        }
-
-
-}*/
 class MainActivity : AppCompatActivity() {
 
-
+    var positionActivity = PositionActivity()
     private var fusedLocationProvider: FusedLocationProviderClient? = null
     private val locationRequest: LocationRequest = LocationRequest.create().apply {
         interval = 30
@@ -70,17 +46,18 @@ class MainActivity : AppCompatActivity() {
 
                 lastLocation= LatLng(location.latitude,location.longitude)
 
-                Toast.makeText(
+                /*Toast.makeText(
                     this@MainActivity,
                     "Got Location: " + lastLocation.toString(),
                     Toast.LENGTH_LONG
-                ).show()
+                ).show()*/
             }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
 
             MyApplicationTheme {
@@ -89,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                     //val context = LocalContext.current
                     val navController = rememberNavController()
                     SetupNavGraph(navController= navController)
+
 
                 }
 
@@ -285,6 +263,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
 }

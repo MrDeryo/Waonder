@@ -37,7 +37,7 @@ public class ChatActivity extends AppCompatActivity {
     private ListView mMessageListView;
     private MessageAdapter mMessageAdapter;
     private ProgressBar mProgressBar;
-    private ImageButton mPhotoPickerButton;
+    //private ImageButton mPhotoPickerButton;
     private EditText mMessageEditText;
     private Button mSendButton;
 
@@ -48,7 +48,6 @@ public class ChatActivity extends AppCompatActivity {
     //private DatabaseReference mDatabase;
     private ChildEventListener mChildEventListener;
     private DataBaseManager dataBaseManager;
-
 
 
     @Override
@@ -65,7 +64,7 @@ public class ChatActivity extends AppCompatActivity {
         // Initialize references to views
         mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
         mMessageListView = (ListView) findViewById(R.id.messageListView);
-        mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
+        // mPhotoPickerButton = (ImageButton) findViewById(R.id.photoPickerButton);
         mMessageEditText = (EditText) findViewById(R.id.messageEditText);
         mSendButton = (Button) findViewById(R.id.sendButton);
 
@@ -78,12 +77,12 @@ public class ChatActivity extends AppCompatActivity {
         mProgressBar.setVisibility(ProgressBar.INVISIBLE);
 
         // ImagePickerButton shows an image picker to upload a image for a message
-        mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
+       /* mPhotoPickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO: Fire an intent to show an image picker
             }
-        });
+        });*/
 
         // Enable Send button when there's text to send
         mMessageEditText.addTextChangedListener(new TextWatcher() {
@@ -111,10 +110,10 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // TODO: Send messages on click
-                String message= mMessageEditText.getText().toString();
-                String username= mUsername;
+                String message = mMessageEditText.getText().toString();
+                String username = mUsername;
 
-                dataBaseManager.sendMessage(message,username);
+                dataBaseManager.sendMessage(message, username);
                 //FriendlyMessage friendlyMessage = new FriendlyMessage(mMessageEditText.getText().toString(), mUsername);
                 //mDatabase.push().setValue(friendlyMessage);
 
@@ -126,7 +125,7 @@ public class ChatActivity extends AppCompatActivity {
         mChildEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                FriendlyMessage friendlyMessage= snapshot.getValue(FriendlyMessage.class);
+                FriendlyMessage friendlyMessage = snapshot.getValue(FriendlyMessage.class);
                 mMessageAdapter.add(friendlyMessage);
             }
 
@@ -152,6 +151,8 @@ public class ChatActivity extends AppCompatActivity {
         };
         dataBaseManager.mDatabase.addChildEventListener(mChildEventListener);
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
